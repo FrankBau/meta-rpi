@@ -6,13 +6,14 @@ BBPATH = "${TOPDIR}"
 BBFILES ?= ""
 
 BBLAYERS ?= " \
-    ${HOME}/poky-morty/meta \
-    ${HOME}/poky-morty/meta-poky \
-    ${HOME}/poky-morty/meta-openembedded/meta-oe \
-    ${HOME}/poky-morty/meta-openembedded/meta-multimedia \
-    ${HOME}/poky-morty/meta-openembedded/meta-networking \
-    ${HOME}/poky-morty/meta-openembedded/meta-python \
-    ${HOME}/poky-morty/meta-qt5 \
-    ${HOME}/poky-morty/meta-raspberrypi \
-    ${HOME}/rpi/meta-rpi \
+    ##COREBASE##/meta \
+    ##COREBASE##/meta-poky \
+    ##COREBASE##/meta-openembedded/meta-oe \
+    ##COREBASE##/meta-openembedded/meta-multimedia \
+    ##COREBASE##/meta-openembedded/meta-networking \
+    ##COREBASE##/meta-openembedded/meta-python \
+    ##COREBASE##/meta-qt5 \
+    ##COREBASE##/meta-raspberrypi \
+    ##COREBASE##/meta-rpi \
   "
+
