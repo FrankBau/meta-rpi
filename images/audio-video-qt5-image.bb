@@ -1,8 +1,9 @@
-SUMMARY = "A console image with gstreamer and other audio and video tools. Tested with framebuffer backend"
+SUMMARY = "An image with gstreamer and other audio and video tools. Tested with framebuffer backend"
 HOMEPAGE = "http://www.jumpnowtek.com"
 LICENSE = "MIT"
 
 require audio-image.bb
+require qt5-image.bb
 
 IMAGE_INSTALL_append += " cpufrequtils htop strace perf"
 IMAGE_INSTALL_append += " packagegroup-rpi-test"
@@ -12,5 +13,5 @@ IMAGE_INSTALL_append += " bluez5"
 IMAGE_INSTALL_append += " hostapd dnsmasq iptables rfkill"
 IMAGE_INSTALL_append += " lighttpd php"
 
-export IMAGE_BASENAME = "console-image-gstreamer"
+export IMAGE_BASENAME = "audio-video-qt5-image"
 

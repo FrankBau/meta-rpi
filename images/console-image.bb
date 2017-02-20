@@ -3,6 +3,7 @@ HOMEPAGE = "http://www.jumpnowtek.com"
 LICENSE = "MIT"
 
 IMAGE_FEATURES += "package-management splash"
+
 IMAGE_LINGUAS = "en-us"
 
 inherit core-image
