@@ -1,18 +1,16 @@
-LINUX_VERSION = "4.4.50"
+LINUX_VERSION = "4.9.13"
 
-SRCREV = "e223d71ef728c559aa865d0c5a4cedbdf8789cfd"
+SRCREV = "173791eb5db0ed7f5d5a406ba0b09ad8a8118e3e"
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/linux-raspberrypi-4.4:"
+FILESEXTRAPATHS_prepend := "${THISDIR}/linux-raspberrypi-4.9:"
 
 SRC_URI = " \
-    git://github.com/raspberrypi/linux.git;protocol=git;branch=rpi-4.4.y \
+    git://github.com/raspberrypi/linux.git;protocol=git;branch=rpi-4.9.y \
     file://0001-dts-Add-pwm-overlays-with-clock-enabled.patch \
-    file://0002-Add-ads1015-driver-to-config.patch \
-    file://0003-Add-ads1115-overlay.patch \
     file://defconfig \
 "
 
-PR = "r54"
+PR = "r4"
 
 KERNEL_DEVICETREE = " \
     bcm2708-rpi-b.dtb \
@@ -23,6 +21,7 @@ KERNEL_DEVICETREE = " \
     bcm2710-rpi-cm3.dtb \
     \
     overlays/adau1977-adc-overlay.dtb \
+    overlays/adau7002-simple-overlay.dtb \
     overlays/ads1015-overlay.dtb \
     overlays/ads1115-overlay.dtb \
     overlays/ads7846-overlay.dtb \
@@ -34,12 +33,14 @@ KERNEL_DEVICETREE = " \
     overlays/bmp085_i2c-sensor-overlay.dtb \
     overlays/dht11-overlay.dtb \
     overlays/dionaudio-loco-overlay.dtb \
+    overlays/dionaudio-loco-v2-overlay.dtb \
     overlays/dpi18-overlay.dtb \
     overlays/dpi24-overlay.dtb \
     overlays/dwc2-overlay.dtb \
     overlays/dwc-otg-overlay.dtb \
     overlays/enc28j60-overlay.dtb \
     overlays/enc28j60-spi2-overlay.dtb \
+    overlays/fe-pi-audio-overlay.dtb \
     overlays/gpio-ir-overlay.dtb \
     overlays/gpio-poweroff-overlay.dtb \
     overlays/hifiberry-amp-overlay.dtb \
@@ -51,13 +52,13 @@ KERNEL_DEVICETREE = " \
     overlays/hy28b-overlay.dtb \
     overlays/i2c0-bcm2708-overlay.dtb \
     overlays/i2c1-bcm2708-overlay.dtb \
+    overlays/i2c-bcm2708-overlay.dtb \
     overlays/i2c-gpio-overlay.dtb \
     overlays/i2c-mux-overlay.dtb \
     overlays/i2c-pwm-pca9685a-overlay.dtb \
     overlays/i2c-rtc-overlay.dtb \
     overlays/i2c-sensor-overlay.dtb \
     overlays/i2s-gpio28-31-overlay.dtb \
-    overlays/i2s-mmap-overlay.dtb \
     overlays/iqaudio-dac-overlay.dtb \
     overlays/iqaudio-dacplus-overlay.dtb \
     overlays/iqaudio-digi-wm8804-audio-overlay.dtb \
@@ -69,6 +70,7 @@ KERNEL_DEVICETREE = " \
     overlays/mcp2515-can0-overlay.dtb \
     overlays/mcp2515-can1-overlay.dtb \
     overlays/mcp3008-overlay.dtb \
+    overlays/midi-uart0-overlay.dtb \
     overlays/mmc-overlay.dtb \
     overlays/mz61581-overlay.dtb \
     overlays/pi3-act-led-overlay.dtb \
@@ -90,6 +92,7 @@ KERNEL_DEVICETREE = " \
     overlays/qca7000-overlay.dtb \
     overlays/raspidac3-overlay.dtb \
     overlays/rpi-backlight-overlay.dtb \
+    overlays/rpi-cirrus-wm5102-overlay.dtb \
     overlays/rpi-dac-overlay.dtb \
     overlays/rpi-display-overlay.dtb \
     overlays/rpi-ft5406-overlay.dtb \
