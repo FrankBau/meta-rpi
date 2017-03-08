@@ -22,7 +22,7 @@ PREFERRED_VERSION_linux-raspberrypi = "4.9.%"
 
 MACHINE = "raspberrypi3"
 
-DL_DIR ?= "${TOPDIR}/downloads"
+DL_DIR ?= "${TOPDIR}/../downloads"
 
 #SSTATE_DIR = "${TOPDIR}/../sstate-cache"
 
