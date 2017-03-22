@@ -1,6 +1,6 @@
-LINUX_VERSION = "4.9.13"
+LINUX_VERSION = "4.9.16"
 
-SRCREV = "f170a0663dd91f7c6596ea896b873d82017ef340"
+SRCREV = "8bf13deebd582fd64a6595d23e9c965b652ef7c8"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/linux-raspberrypi-4.9:"
 
@@ -10,7 +10,7 @@ SRC_URI = " \
     file://defconfig \
 "
 
-PR = "r6"
+PR = "r9"
 
 KERNEL_DEVICETREE = " \
     bcm2708-rpi-0-w.dtb \
@@ -29,6 +29,7 @@ KERNEL_DEVICETREE = " \
     overlays/akkordion-iqdacplus-overlay.dtb \
     overlays/allo-piano-dac-pcm512x-audio-overlay.dtb \
     overlays/at86rf233-overlay.dtb \
+    overlays/audioinjector-addons-overlay.dtb \
     overlays/audioinjector-wm8731-audio-overlay.dtb \
     overlays/audremap-overlay.dtb \
     overlays/bmp085_i2c-sensor-overlay.dtb \
