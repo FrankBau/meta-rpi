@@ -1,16 +1,15 @@
-LINUX_VERSION = "4.9.17"
+LINUX_VERSION = "4.9.21"
 
-SRCREV = "cd6413a82a66de6ecce828ce67df4f6e3290ea86"
+SRCREV = "5e4ee836560d4c0371e109bf469e1ad808ae7a44"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/linux-raspberrypi-4.9:"
 
 SRC_URI = " \
     git://github.com/raspberrypi/linux.git;protocol=git;branch=rpi-4.9.y \
-    file://0001-dts-Add-pwm-overlays-with-clock-enabled.patch \
     file://defconfig \
 "
 
-PR = "r10"
+PR = "r15"
 
 KERNEL_DEVICETREE = " \
     bcm2708-rpi-0-w.dtb \
@@ -27,7 +26,9 @@ KERNEL_DEVICETREE = " \
     overlays/ads1115-overlay.dtb \
     overlays/ads7846-overlay.dtb \
     overlays/akkordion-iqdacplus-overlay.dtb \
+    overlays/allo-boss-dac-pcm512x-audio-overlay.dtb \
     overlays/allo-piano-dac-pcm512x-audio-overlay.dtb \
+    overlays/allo-piano-dac-plus-pcm512x-audio-overlay.dtb \
     overlays/at86rf233-overlay.dtb \
     overlays/audioinjector-addons-overlay.dtb \
     overlays/audioinjector-wm8731-audio-overlay.dtb \
@@ -43,6 +44,7 @@ KERNEL_DEVICETREE = " \
     overlays/enc28j60-overlay.dtb \
     overlays/enc28j60-spi2-overlay.dtb \
     overlays/fe-pi-audio-overlay.dtb \
+    overlays/googlevoicehat-soundcard-overlay.dtb \
     overlays/gpio-ir-overlay.dtb \
     overlays/gpio-poweroff-overlay.dtb \
     overlays/hifiberry-amp-overlay.dtb \
@@ -88,9 +90,7 @@ KERNEL_DEVICETREE = " \
     overlays/pitft35-resistive-overlay.dtb \
     overlays/pps-gpio-overlay.dtb \
     overlays/pwm-2chan-overlay.dtb \
-    overlays/pwm-2chan-with-clk-overlay.dtb \
     overlays/pwm-overlay.dtb \
-    overlays/pwm-with-clk-overlay.dtb \
     overlays/qca7000-overlay.dtb \
     overlays/raspidac3-overlay.dtb \
     overlays/rpi-backlight-overlay.dtb \

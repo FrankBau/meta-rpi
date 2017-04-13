@@ -2,11 +2,11 @@
 
 if [ -z "${MACHINE}" ]; then
 	echo "Environment variable MACHINE not set"
-	echo "Example: export MACHINE=raspberrypi2 or export MACHINE=raspberrypi3"
+	echo "Example: export MACHINE=raspberrypi2 or export MACHINE=raspberrypi"
 	exit 1
 fi
 
-if [ "${MACHINE}" != "raspberrypi3" ] && [ "${MACHINE}" != "raspberrypi2" ] && [ "${MACHINE}" != "raspberrypi" ]; then
+if [ "${MACHINE}" != "raspberrypi2" ] && [ "${MACHINE}" != "raspberrypi" ]; then
 	echo "Invalid MACHINE: ${MACHINE}"
 	exit 1
 fi
@@ -85,20 +85,27 @@ echo "Writing ${TARGET_HOSTNAME} to /etc/hostname"
 export TARGET_HOSTNAME
 sudo -E bash -c 'echo ${TARGET_HOSTNAME} > /media/card/etc/hostname'        
 
-if [ -f ${SRCDIR}/interfaces ]; then
-	echo "Writing interfaces to /media/card/etc/network/"
-	sudo cp ${SRCDIR}/interfaces /media/card/etc/network/interfaces
-elif [ -f ./interfaces ]; then
-	echo "Writing ./interfaces to /media/card/etc/network/"
-	sudo cp ./interfaces /media/card/etc/network/interfaces
+if [ -f ./ap-interfaces ]; then
+	echo "Writing ap-interfaces to /media/card/etc/network/interfaces"
+	sudo cp ./ap-interfaces /media/card/etc/network/interfaces
 fi
 
-if [ -f ${SRCDIR}/wpa_supplicant.conf ]; then
-	echo "Writing wpa_supplicant.conf to /media/card/etc/"
-	sudo cp ${SRCDIR}/wpa_supplicant.conf /media/card/etc/wpa_supplicant.conf
-elif [ -f ./wpa_supplicant.conf ]; then
-	echo "Writing ./wpa_supplicant.conf to /media/card/etc/"
-	sudo cp ./wpa_supplicant.conf /media/card/etc/wpa_supplicant.conf
+if [ -f ./ap-hostapd.conf ]; then
+	echo "Writing ap-hostapd.conf to /media/card/etc/hostapd.conf"
+	sudo cp ./ap-hostapd.conf /media/card/etc/hostapd.conf
+fi
+
+if [ -f ./ap-dnsmasq.conf ]; then
+	echo "Writing ap-dnsmasq.conf to /media/card/etc/dnsmasq.conf"
+	sudo cp ./ap-dnsmasq.conf /media/card/etc/dnsmasq.conf
+fi
+
+if [ -f ./ap-nat.rules ]; then
+	echo "Writing ap-nat.rules to /media/card/etc/nat.rules"
+	sudo cp ./ap-nat.rules /media/card/etc/nat.rules
+
+	sudo sed -i 's:#net.ipv4.ip_forward=1:net.ipv4.ip_forward=1:' /media/card/etc/sysctl.conf 
+	sudo sed -i 's:#up iptables-restore < /etc/nat.rules:up iptables-restore < /etc/nat.rules:' /media/card/etc/network/interfaces
 fi
 
 echo "Unmounting ${DEV}"
