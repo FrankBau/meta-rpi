@@ -5,7 +5,7 @@ LICENSE = "MIT"
 # for basic stuff like gcc and make
 require audio-image.bb
 require console-image.bb
-# require qt5-image.bb
+require qt5-image.bb
 
 # toolbox
 IMAGE_INSTALL_append += " \
@@ -74,6 +74,14 @@ IMAGE_INSTALL_append += " \
   bluez5-noinst-tools \
 "
 
+# lttng tracing tools, see http://lttng.org/docs/
+IMAGE_INSTALL_append += " \
+  lttng-tools \
+  lttng-modules \
+  lttng-ust \
+  babeltrace \
+"
+
 # needs tzdata
 set_local_timezone() {
   ln -sf /usr/share/zoneinfo/Europe/Paris ${IMAGE_ROOTFS}/etc/localtime
@@ -83,5 +91,5 @@ ROOTFS_POSTPROCESS_COMMAND += " \
   set_local_timezone ; \
 "
 
-export IMAGE_BASENAME = "audio-video-opencv-image"
+export IMAGE_BASENAME = "audio-video-qt5-opencv-image"
 
