@@ -1,0 +1,44 @@
+From 3160db5c2a41ff4fbcc7fba7567496157bf324a3 Mon Sep 17 00:00:00 2001
+From: Frank Bauernoeppel <frank@bauernoeppel.de>
+Date: Sun, 18 Jun 2017 19:51:45 +0200
+Subject: [PATCH] egl+gles video driver for raspi
+
+---
+ configure.in            |   4 +-
+ src/video/SDL_egl.c     |   2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index f534633..1d24dd4 100644
+--- a/configure.in
++++ b/configure.in
+@@ -2808,11 +2808,11 @@ case "$host" in
+             *-raspberry-linux*)
+                 # Raspberry Pi
+                 ARCH=linux
+-                RPI_CFLAGS="-I/opt/vc/include -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include/interface/vmcs_host/linux"
++                RPI_CFLAGS="-I/usr/include/interface/vcos/pthreads -I/usr/include/interface/vmcs_host/linux"
+                 CFLAGS="$CFLAGS $RPI_CFLAGS"
+                 SDL_CFLAGS="$SDL_CFLAGS $RPI_CFLAGS"
+                 EXTRA_CFLAGS="$EXTRA_CFLAGS $RPI_CFLAGS"
+-                EXTRA_LDFLAGS="$EXTRA_LDFLAGS -L/opt/vc/lib -lbcm_host -ldl"
++                EXTRA_LDFLAGS="$EXTRA_LDFLAGS -lbcm_host -lvchostif -ldl"
+ 
+                 if test x$enable_video = xyes; then
+                     SOURCES="$SOURCES $srcdir/src/video/raspberry/*.c"
+diff --git a/src/video/SDL_egl.c b/src/video/SDL_egl.c
+index bfd4aff..135aa33 100644
+--- a/src/video/SDL_egl.c
++++ b/src/video/SDL_egl.c
+@@ -38,7 +38,7 @@
+ #endif
+ #endif /* EGL_KHR_create_context */
+ 
+-#if SDL_VIDEO_DRIVER_RPI
++#if 0
+ /* Raspbian places the OpenGL ES/EGL binaries in a non standard path */
+ #define DEFAULT_EGL "/opt/vc/lib/libEGL.so"
+ #define DEFAULT_OGL_ES2 "/opt/vc/lib/libGLESv2.so"
+-- 
+2.7.4
+

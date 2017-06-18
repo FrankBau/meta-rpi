@@ -7,10 +7,20 @@ require audio-image.bb
 require console-image.bb
 require qt5-image.bb
 
+# Qt5 example
+IMAGE_INSTALL_append += " \
+    cinematicexperience \
+"
+
+# SDL2
+IMAGE_INSTALL_append += " \
+    libsdl2-dev \
+"
+
 # toolbox
 IMAGE_INSTALL_append += " \
   nano \
-  cpufrequtils \ 
+  cpufrequtils \
   strace \
   perf \
   tree \
