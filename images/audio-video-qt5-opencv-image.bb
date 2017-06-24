@@ -39,6 +39,7 @@ IMAGE_INSTALL_append += " \
   e2fsprogs \
   tzdata \
   watchdog \
+  start-stop-daemon \
 "
 
 IMAGE_INSTALL_append += " packagegroup-rpi-test"
@@ -76,6 +77,7 @@ IMAGE_INSTALL_append += " \
   hostapd \
   dnsmasq \
   iptables \
+  rfkill \
 "
 
 # blueetooth stuff
