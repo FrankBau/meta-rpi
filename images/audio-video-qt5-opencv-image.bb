@@ -27,7 +27,7 @@ IMAGE_INSTALL_append += " \
   htop \
   tcpdump \
   i2c-tools \
-  canutils \
+  can-utils \
   usbutils \
   spitools \
   iperf \
@@ -40,6 +40,7 @@ IMAGE_INSTALL_append += " \
   tzdata \
   watchdog \
   start-stop-daemon \
+  logrotate \
 "
 
 IMAGE_INSTALL_append += " packagegroup-rpi-test"
