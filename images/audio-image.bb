@@ -9,16 +9,35 @@ inherit core-image
 DEPENDS += "bcm2835-bootfiles"
 
 CORE_OS = " \
+    firewall \
+    iptables \
     ntp \
     ntp-tickadj \
     openssh openssh-keygen openssh-sftp-server \
+    procps \
     term-prompt \
     tzdata \
 "
 
+WIFI_SUPPORT = " \
+    crda \
+    iw \
+    linux-firmware-bcm43430 \
+    wireless-tools \
+    wpa-supplicant \
+"
+
 ALSA += " \
-    alsa-dev \
-    alsa-lib \
+    libasound \
+    libavcodec \
+    libavdevice \
+    libavfilter \
+    libavformat \
+    libavutil \
+    libpostproc \
+    libswresample \
+    libswscale \
+    alsa-conf \
     alsa-utils \
     alsa-utils-scripts \
  "
@@ -26,6 +45,7 @@ ALSA += " \
 IMAGE_INSTALL += " \
     ${ALSA} \
     ${CORE_OS} \
+    ${WIFI_SUPPORT} \
     iqaudio-mute \
     pianobar \
  "

@@ -1,5 +1,5 @@
 # Local configuration for meta-rpi images
-# Yocto Project 2.2 Poky distribution [morty] branch
+# Yocto Project 2.3 Poky distribution [pyro] branch
 # This is a sysvinit system
 
 LICENSE_FLAGS_WHITELIST = "commercial"
@@ -12,7 +12,7 @@ PREFERRED_PROVIDER_jpeg = "libjpeg-turbo"
 PREFERRED_PROVIDER_jpeg-native = "libjpeg-turbo-native"
 
 PREFERRED_PROVIDER_udev = "eudev"
-VIRTUAL_RUNTIME_init_manager = "sysvinit"
+VIRTUAL-RUNTIME_init_manager = "sysvinit"
 
 MACHINE_FEATURES_remove = "apm"
 
@@ -26,7 +26,7 @@ DL_DIR ?= "${TOPDIR}/../downloads"
 
 #SSTATE_DIR = "${TOPDIR}/../sstate-cache"
 
-#TMPDIR = "${TOPDIR}/tmp-morty"
+#TMPDIR = "${TOPDIR}/tmp"
 
 DISTRO = "poky"
 
@@ -34,19 +34,24 @@ PACKAGE_CLASSES = "package_ipk"
 
 DISABLE_OVERSCAN = "1"
 # DISPMANX_OFFLINE = "1"
+
 ENABLE_UART = "1"
 ENABLE_RPI3_SERIAL_CONSOLE = "1"
 
 # i686 or x86_64
 SDKMACHINE = "x86_64"
 
-EXTRA_IMAGE_FEATURES = "debug-tweaks"
+#EXTRA_IMAGE_FEATURES = "debug-tweaks"
+INHERIT += "extrausers"
+EXTRA_USERS_PARAMS = "usermod -P changeme root; "
 
 USER_CLASSES = "image-mklibs image-prelink"
 
 PATCHRESOLVE = "noop"
 
 RM_OLD_IMAGE = "1"
+
+INHERIT += "rm_work"
 
 CONF_VERSION = "1"
 

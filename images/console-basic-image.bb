@@ -2,8 +2,7 @@ SUMMARY = "A console development image with some C/C++ dev tools"
 HOMEPAGE = "http://www.jumpnowtek.com"
 LICENSE = "MIT"
 
-IMAGE_FEATURES += "package-management splash"
-
+IMAGE_FEATURES += "package-management"
 IMAGE_LINGUAS = "en-us"
 
 inherit core-image
@@ -19,11 +18,7 @@ CORE_OS = " \
 WIFI_SUPPORT = " \
     crda \
     iw \
-    linux-firmware-bcm43430 \
-    linux-firmware-ralink \
-    linux-firmware-rtl8192ce \
-    linux-firmware-rtl8192cu \
-    linux-firmware-rtl8192su \
+    linux-firmware-brcm43430 \
     wireless-tools \
     wpa-supplicant \
 "
@@ -40,8 +35,6 @@ DEV_SDK_INSTALL = " \
     g++-symlinks \
     gcc \
     gcc-symlinks \
-    gdb \
-    gdbserver \
     gettext \
     git \
     ldd \
@@ -49,11 +42,8 @@ DEV_SDK_INSTALL = " \
     libstdc++-dev \
     libtool \
     make \
-    perl-modules \
     pkgconfig \
     python-modules \
-    python3-modules \
-    python3-pydoc \
 "
 
 DEV_EXTRAS = " \
@@ -65,22 +55,14 @@ DEV_EXTRAS = " \
 
 EXTRA_TOOLS_INSTALL = " \
     bzip2 \
-    devmem2 \
-    dosfstools \
     ethtool \
-    fbset \
     findutils \
-    firewall \
     i2c-tools \
     iperf3 \
     iproute2 \
-    iptables \
     less \
-    memtester \
-    nano \
     netcat \
     procps \
-    rsync \
     sysfsutils \
     tcpdump \
     unzip \
@@ -89,27 +71,11 @@ EXTRA_TOOLS_INSTALL = " \
     zip \
 "
 
-CAN_TOOLS = " \
-    canutils \
-"
-
-RPI_STUFF = " \
-    bcm2835-tests \
-    omxplayer \
-    pi-blaster \
-    raspi2fb \
-    rpio \
-    rpi-gpio \
-    userland \
-"
-
 IMAGE_INSTALL += " \
-    ${CAN_TOOLS} \
     ${CORE_OS} \
     ${DEV_SDK_INSTALL} \
     ${DEV_EXTRAS} \
     ${EXTRA_TOOLS_INSTALL} \
-    ${RPI_STUFF} \
     ${WIFI_SUPPORT} \
 "
 
@@ -126,5 +92,5 @@ ROOTFS_POSTPROCESS_COMMAND += " \
     disable_bootlogd ; \
  "
 
-export IMAGE_BASENAME = "console-image"
+export IMAGE_BASENAME = "console-basic-image"
 

@@ -116,8 +116,12 @@ if [ $? -ne 0 ]; then
 	exit 1
 fi
 
-echo "Copying overlay dtbs"
-sudo cp ${SRCDIR}/Image-*-overlay.dtb /media/card/overlays/
+echo "Copying overlay dtbos"
+for f in ${SRCDIR}/Image-*.dtbo; do
+	if [ -L $f ]; then
+		sudo cp $f /media/card/overlays
+	fi
+done
 
 if [ $? -ne 0 ]; then
 	echo "Error copying overlays"
@@ -125,8 +129,8 @@ if [ $? -ne 0 ]; then
 	exit 1
 fi
 
-echo "Renaming overlay dtbs to dtbos"
-sudo rename 's/Image-([\w\-]+)-overlay.dtb/$1.dtbo/' /media/card/overlays/*.dtb
+echo "Stripping 'Image-' from overlay dtbos"
+sudo rename 's/Image-([\w\-]+).dtbo/$1.dtbo/' /media/card/overlays/*.dtbo
 
 echo "Copying dtbs"
 for f in ${DTBS}; do
