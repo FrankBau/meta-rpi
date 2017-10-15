@@ -30,7 +30,7 @@ IMAGE_INSTALL_append += " \
   can-utils \
   usbutils \
   spitools \
-  iperf \
+  iperf3 \
   stress \
   cmake \
   git \
