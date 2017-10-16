@@ -7,6 +7,11 @@ require audio-image.bb
 require console-image.bb
 require qt5-image.bb
 
+# can-utils has conciser command line options
+IMAGE_INSTALL_remove += " \
+  canutils \
+"
+
 # Qt5 example
 IMAGE_INSTALL_append += " \
     cinematicexperience \
