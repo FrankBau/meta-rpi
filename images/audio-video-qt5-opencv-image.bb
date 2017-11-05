@@ -7,6 +7,8 @@ require audio-image.bb
 require console-image.bb
 require qt5-image.bb
 
+IMAGE_FEATURES+="dev-pkgs"
+
 # can-utils has conciser command line options
 IMAGE_INSTALL_remove += " \
   canutils \
@@ -67,6 +69,7 @@ IMAGE_INSTALL_append += " \
   gstreamer1.0-plugins-base \
   gstreamer1.0-plugins-good \
   gstreamer1.0-plugins-bad \
+  gstreamer1.0-plugins-ugly \
   gstreamer1.0-libav \
   gstreamer1.0-rtsp-server \
 "
